@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-
+// import './Navbar'
+import Navbar from './Navbar';
 function App() {
   const [data, setData] = useState([]);
   useEffect(()=>{
@@ -14,6 +15,7 @@ function App() {
 
   return (
     <div className="App">
+      <Navbar/>
       <h3>All users:</h3>
       <ul>
         {data.map(item=>(
