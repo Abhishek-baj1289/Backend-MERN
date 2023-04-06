@@ -7,7 +7,7 @@ const connectDB = require('./connections/dbConn');
 const { default: mongoose } = require('mongoose');
 connectDB();
 const PORT =process.env.PORT || 3500;
-const {createUser, getUsers, deleteUsers} = require('./controllers/userController')
+const {createUser, getUsers, deleteUsers, updateUsers} = require('./controllers/userController')
 app.use(cors())
 app.use(express.json())
 
@@ -18,6 +18,7 @@ app.get('/', (req, res)=>{
 app.post('/create', createUser)
 app.get('/users', getUsers)
 app.delete('/users', deleteUsers)
+app.put('/users',updateUsers)
 mongoose.connection.on('open',()=>{
     console.log("mongo DB connected");
     app.listen(PORT, ()=>console.log(`App listening on port ${PORT}`));
