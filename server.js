@@ -19,6 +19,10 @@ app.post('/create', createUser)
 app.get('/users', getUsers)
 app.delete('/users', deleteUsers)
 app.put('/users',updateUsers)
+
+
+
+
 mongoose.connection.on('open',()=>{
     console.log("mongo DB connected");
     app.listen(PORT, ()=>console.log(`App listening on port ${PORT}`));
