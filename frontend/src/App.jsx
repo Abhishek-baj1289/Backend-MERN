@@ -4,6 +4,7 @@ import './App.css'
 import Navbar from './Navbar';
 function App() {
   const [data, setData] = useState([]);
+  const [search, setSearch] = useState('');
   useEffect(()=>{
     const fetchData = async()=>{
       const response = await fetch('http://localhost:3500/users');
@@ -15,13 +16,14 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar/>
+      <Navbar search = {search} setSearch = {setSearch}/>
       <h3>All users:</h3>
       <ul>
-        {data.map(item=>(
+        {data.filter(item=>item.firstname.includes(search)).map(item=>(
           <li key={item._id}>Name: {item.firstname} {item.lastname} <br/>Status: {item.status}</li>
         ))}
       </ul>
+      <button id="addNew">Add New</button>
     </div>
   )
 }
