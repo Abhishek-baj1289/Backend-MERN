@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar';
-
+import './assets/FormCSS.css'
 
 const AddUsers = () => {
   const [data, setData] = useState({})
