@@ -15,7 +15,7 @@ app.get('/', (req, res)=>{
     res.send("The server is up and running")
 })
 
-app.post('/create', createUser)
+app.post('/users', createUser)
 app.get('/users', getUsers)
 app.delete('/users', deleteUsers)
 app.put('/users',updateUsers)

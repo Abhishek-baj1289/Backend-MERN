@@ -3,7 +3,8 @@ import { useNavigate, Route, Routes, Link } from 'react-router-dom';
 import './App.css'
 // import './Navbar'
 import Navbar from './Navbar';
-function App() {
+import AddUsers from './AddUsers';
+function ShowUsers() {
   const [data, setData] = useState([]);
   const [search, setSearch] = useState('');
   const navigate  = useNavigate();
@@ -16,7 +17,7 @@ function App() {
     fetchData()
   },[])
   const addUser = ()=>{
-    navigate('AddUsers')
+    navigate('/add')
   }
   return (
     <div className="App">
@@ -31,5 +32,13 @@ function App() {
     </div>
   )
 }
-
+function App() {
+  return (
+    <Routes>
+      <Route path='/' element={<ShowUsers/>}/>
+      <Route path='/add' element={<AddUsers/>}/>
+    </Routes>
+    // <ShowUsers/>
+  )
+}
 export default App
