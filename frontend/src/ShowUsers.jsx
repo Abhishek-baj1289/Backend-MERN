@@ -1,9 +1,11 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate ,Link, Router, Routes, useParams } from "react-router-dom";
 import Navbar from './Navbar';
-
+import UserDetail from "./UserDetail";
+import UserItem from "./UserItem";
 function ShowUsers() {
     const [data, setData] = useState([]);
+    const Params = useParams();
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
     useEffect(() => {
@@ -14,19 +16,12 @@ function ShowUsers() {
       };
       fetchData()
     }, [])
-    const addUser = () => {
-      navigate('/add')
-    }
     return (
       <div className="App">
         <Navbar search={search} setSearch={setSearch} />
         <h3 onClick={()=>navigate('/')}>All users:</h3>
-        <ul>
-          {data.filter(item => item.firstname.includes(search)).map(item => (
-            <li key={item._id}>Name: {item.firstname} {item.lastname} <br />Status: {item.status}</li>
-          ))}
-        </ul>
-        <button id="addNew" onClick={addUser}>Add New</button>
+        <UserItem data = {data} search = {search}/>
+        <button id="addNew" onClick={()=>navigate('/add')}>Add New</button>
       </div>
     )
   }
