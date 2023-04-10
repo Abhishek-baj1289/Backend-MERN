@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
+import Navbar from './Navbar';
 
 
 const AddUsers = () => {
   const [data, setData] = useState({})
-  const handleSubmit = async(e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const { uid, firstname, lastname, pwd, stat } = e.target;
     const newData = {
@@ -13,19 +14,19 @@ const AddUsers = () => {
       'status': stat.value,
       'password': pwd.value
     };
-    await setData(prev=>({...prev, ...newData}));
+    setData(newData);
   }
 
 
-   useEffect(() => {
-        console.log('useeffect called',data);
-        if(Object.keys(data).length===0){
-          console.log('jugaad lafa')
-        }else{
-          userSubmit(data)
-        }
-    }, [data]);
-  
+  useEffect(() => {
+    console.log('useeffect called', data);
+    if (Object.keys(data).length === 0) {
+      console.log('jugaad lafa')
+    } else {
+      userSubmit(data)
+    }
+  }, [data]);
+
 
 
   const userSubmit = async (user) => {
@@ -36,7 +37,7 @@ const AddUsers = () => {
           "Content-Type": "application/json"
         },
         body: JSON.stringify(user)
-        
+
       });
 
     } catch (err) {
@@ -46,7 +47,10 @@ const AddUsers = () => {
 
 
   return (
+    
     <form onSubmit={handleSubmit}>
+      <Navbar/>
+
       <label>Enter your User ID:
         <input type="text" id='uid' name='uid' required />
       </label><br />
@@ -62,7 +66,7 @@ const AddUsers = () => {
       <label>Enter your Status:
         <input type="text" id='stat' name='stat' />
       </label>
-      <input type="submit" />
+      <button type='submit'>submit</button>
     </form>
   )
 

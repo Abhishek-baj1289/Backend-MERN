@@ -39,6 +39,10 @@ h1 {
   position: absolute;
   align-items: left;
   margin-left: -5rem;
+  
+}
+.homelink:hover{
+  cursor: pointer;
 }
 #search{
   width: 500px;
