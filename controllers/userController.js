@@ -51,12 +51,16 @@ const deleteUsers=async(req, res)=>{
 
 const updateUsers = async(req, res)=>{
     console.log('Update user requested');
-    const {v_id, new_role}= req.body;
+    const {v_id, new_role, new_fname, new_lname, new_pwd}= req.body;
     if(!v_id) return res.status(401).json({"message": "v_id field is required"});
     try {
         const user = await User.findOne({"vid":v_id}).exec();
         if(!user) return res.status(404).json({"message": "user doesn't exist"});
-        const result = await User.updateOne({"vid":v_id}, {$set:{status:new_role}});
+        const result = await User.updateOne({"vid":v_id}, {$set:{
+            "firstname": new_fname,
+            "lastname": new_lname,
+            "status": new_role,
+            "password": new_pwd}});
         console.log(result);
         res.status(202).json({"message":"User updated successfuly"})
 
