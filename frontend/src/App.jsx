@@ -22,10 +22,10 @@ function App() {
   return (
     
     <Routes>
-      <Route path = '/404' element={<NotFound/>}/>
-      <Route path='/:id' element={<UserDetail data = {data}/>}/>
+      <Route path='/user/:id' element={<UserDetail data = {data}/>}/>
       <Route path='/' element={<ShowUsers data = {data} setData = {setData} />} />
       <Route path='/add' element={<AddUsers />} />
+      <Route path = '/*' element={<NotFound/>}/>
     </Routes>
     // <ShowUsers/>
   )

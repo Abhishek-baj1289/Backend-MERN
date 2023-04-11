@@ -7,7 +7,7 @@ const UserItem = ({data, search}) => {
     <>
     <ul>
     {data.filter(item => item.firstname.toLowerCase().includes(search) || item.lastname.toLowerCase().includes(search)).map(item => (
-      <li key={item._id} onClick={()=>navigate(`/${item._id}`)}>Name: {item.firstname} {item.lastname} <br />Status: {item.status}</li>
+      <li key={item._id} onClick={()=>navigate(`/user/${item._id}`)}>Name: {item.firstname} {item.lastname} <br />Status: {item.status}</li>
     ))}
   </ul>
   </>
