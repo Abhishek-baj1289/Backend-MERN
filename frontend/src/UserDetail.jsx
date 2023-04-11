@@ -1,13 +1,20 @@
 import React from 'react'
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
-const UserDetail = () => {
+const UserDetail = ({data}) => {
+  const navigate = useNavigate()
   const { id } = useParams();
+  const user = data.filter(item=>item._id === id)
+  if(user.length===0){
+    navigate('/404')
 
+  }
   console.log(id);
+  console.log(user);
   return (
     <div>
-      <h6>gg</h6>
+      <h6>g</h6>
+      <button onClick={()=>navigate('/')}>Home</button>
     </div>
   )
 }

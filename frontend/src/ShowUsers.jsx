@@ -6,14 +6,7 @@ import UserItem from "./UserItem";
 function ShowUsers({data, setData}) {
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
-    useEffect(() => {
-      const fetchData = async () => {
-        const response = await fetch('http://localhost:3500/users');
-        const responseData = await response.json()
-        setData(responseData)
-      };
-      fetchData()
-    }, [])
+
     return (
       <div className="App">
         <Navbar search={search} setSearch={setSearch} />
