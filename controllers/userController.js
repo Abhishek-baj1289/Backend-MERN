@@ -24,6 +24,7 @@ const createUser = async(req, res)=>{
 
 }
 const getUsers = async(req, res)=>{
+    console.log('get suer requested')
     try {
         const results = await User.find().select('-password');
         if(!results) return res.status(400).json('no users found')

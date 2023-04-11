@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import './assets/PopupCSS.css'
 const Popup = props => {
     const navigate = useNavigate();
     const [userData, setUserData] = useState({});
+    const location = useLocation();
 
     const handleSubmit = async(e)=>{
         e.preventDefault();
@@ -27,6 +28,8 @@ const Popup = props => {
                 },
                 body: JSON.stringify(userData)
             })
+            props.setPath(location.pathname)
+            
         }catch(err){
             console.log(err?.message)
         }
@@ -38,6 +41,7 @@ const Popup = props => {
               console.log('jugaad lafa')
             } else {
               handleUpload(userData);
+            //   console.log(props.path)
               navigate('/')
             }
         } catch (err) {

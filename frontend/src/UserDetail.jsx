@@ -2,7 +2,7 @@ import React from 'react'
 import { useNavigate, useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Popup from './Popup';
-const UserDetail = ({data}) => {
+const UserDetail = ({data, path , setPath}) => {
   const navigate = useNavigate()
   const { id } = useParams();
   const [isopen, setIsopen] = useState(false);
@@ -42,7 +42,7 @@ const UserDetail = ({data}) => {
       <h6>{user.lastname}</h6>
       <h6>{user.status}</h6>
       <div>
-        {isopen && <Popup handleClose={togglePopup} user = {user}/>}
+        {isopen && <Popup handleClose={togglePopup} user = {user} path = {path} setPath = {setPath}/>}
       </div>
       <button onClick={()=>navigate('/')}>Home</button>
       <button onClick={()=>togglePopup()}>Edit User</button>

@@ -10,6 +10,7 @@ import AddUsers from './AddUsers';
 
 function App() {
   const [data, setData] = useState([]);
+  const [path, setPath] = useState('');
   useEffect(() => {
     const fetchData = async () => {
       const response = await fetch('http://localhost:3500/users');
@@ -17,12 +18,15 @@ function App() {
       setData(responseData)
     };
     fetchData()
-  }, [data])
+  }, [])
+  if(path.includes('user/')){
+    window.location.reload()
 
+  }
   return (
     
     <Routes>
-      <Route path='/user/:id' element={<UserDetail data = {data}/>}/>
+      <Route path='/user/:id' element={<UserDetail data = {data} path = {path} setPath = {setPath}/>}/>
       <Route path='/' element={<ShowUsers data = {data} setData = {setData} />} />
       <Route path='/add' element={<AddUsers />} />
       <Route path = '/*' element={<NotFound/>}/>
