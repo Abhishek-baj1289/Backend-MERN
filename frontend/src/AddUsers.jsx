@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import Navbar from './Navbar';
+import { useNavigate } from 'react-router-dom';
 import './assets/FormCSS.css'
 
 const AddUsers = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({})
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ const AddUsers = () => {
       'password': pwd.value
     };
     setData(newData);
+    // navigate('/')
   }
 
 
@@ -39,7 +42,7 @@ const AddUsers = () => {
         body: JSON.stringify(user)
 
       });
-
+      navigate('/')
     } catch (err) {
       console.log(err?.message)
     }

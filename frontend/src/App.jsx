@@ -17,7 +17,7 @@ function App() {
       setData(responseData)
     };
     fetchData()
-  }, [])
+  }, [data])
 
   return (
     
