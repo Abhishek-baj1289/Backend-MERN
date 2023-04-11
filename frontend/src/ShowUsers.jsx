@@ -3,9 +3,7 @@ import { useNavigate ,Link, Router, Routes, useParams } from "react-router-dom";
 import Navbar from './Navbar';
 import UserDetail from "./UserDetail";
 import UserItem from "./UserItem";
-function ShowUsers() {
-    const [data, setData] = useState([]);
-    const Params = useParams();
+function ShowUsers({data, setData}) {
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
     useEffect(() => {
